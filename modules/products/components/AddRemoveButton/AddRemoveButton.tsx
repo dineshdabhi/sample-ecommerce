@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import React, { useEffect, useState } from 'react';
 import { Product } from '../../shared/product.type';
 import useStyles from './AddRemoveButton.style';
+import { updateCartItemQuantity } from "../../../cart/redux/cart.action";
 
 function AddRemoveButton({ product, cartItem }: {product?: Product, cartItem?: any}) {
   const classes = useStyles();
@@ -15,6 +16,10 @@ function AddRemoveButton({ product, cartItem }: {product?: Product, cartItem?: a
 
   const updateQuantity = async (newQuantity) => {
     const productRecord = product || cartItem.product;
+    dispatch(updateCartItemQuantity({
+      quantity: newQuantity,
+      product: productRecord,
+    }));
     setQuantity(newQuantity);
   };
 

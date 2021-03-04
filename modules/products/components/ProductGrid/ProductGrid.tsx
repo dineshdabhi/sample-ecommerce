@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
+import {useSelector} from "react-redux";
 import { Grid, Typography } from '@material-ui/core';
-import { useSelector } from 'react-redux';
 import { cloneDeep } from 'lodash';
 import { FindInPage } from '@material-ui/icons';
 import ProductGridItem from '../ProductGridItem/ProductGridItem';
@@ -43,7 +43,7 @@ IProdductGridProps) {
     totalPages: 1,
     records: [],
   });
-  const cartItems = [];
+  const cartItems = useSelector((state) => state.cartState.cartItems);
 
   const setProductsData = (responseData) => {
     const tempProducts = cloneDeep(responseData.records);
@@ -64,7 +64,7 @@ IProdductGridProps) {
   const getProductsRecords = async ({ page }) => {
     try {
       setIsLoading(true);
-      await sleep(4000);
+      await sleep(2000);
       const response = await gridService({ page });
       setProductResponse(response);
       setProductsData(response);
@@ -80,9 +80,9 @@ IProdductGridProps) {
     getProductsRecords({ page: 1 });
   }, [triggerChange]);
 
-  useEffect(() => {
-    setProductsData(productResponse);
-  }, [cartItems]);
+  // useEffect(() => {
+  //   setProductsData(productResponse);
+  // }, [cartItems]);
 
   return (
     productList.length > 0
