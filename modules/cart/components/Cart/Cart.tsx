@@ -68,7 +68,7 @@ export default function Cart() {
                     </Typography>
                     <Typography className={classes.totalAmount}>
                       $
-                      {itemTotal}
+                      {itemTotal.toFixed(2)}
                     </Typography>
                   </Grid>
 
@@ -78,7 +78,7 @@ export default function Cart() {
                     </Typography>
                     <Typography className={classes.totalAmount}>
                       $
-                      {totalTax}
+                      {totalTax.toFixed(2)}
                     </Typography>
                   </Grid>
 
@@ -88,7 +88,7 @@ export default function Cart() {
                     </Typography>
                     <Typography className={classes.totalAmount}>
                       $
-                      {totalShipping}
+                      {totalShipping.toFixed(2)}
                     </Typography>
                   </Grid>
 
@@ -98,7 +98,7 @@ export default function Cart() {
                     </Typography>
                     <Typography className={classes.totalAmount}>
                       $
-                      {totalAmount}
+                      {totalAmount.toFixed(2)}
                     </Typography>
                   </Grid>
                 </Grid>

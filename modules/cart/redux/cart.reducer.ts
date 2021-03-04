@@ -32,7 +32,7 @@ const getTotalItemsAndPrice = (cartItems) => {
   let totalTax = 0;
   cartItems.forEach((item) => {
     totalProducts += item.quantity;
-    totalAmount += item.cartItemTotal;
+    itemTotal += toFixedNumber((item.cartItemTotal) * item.quantity);
     totalTax += toFixedNumber((item.cartItemTotal * 1.23) / 100);
   });
   totalAmount = itemTotal + totalTax + initialState.totalShipping;

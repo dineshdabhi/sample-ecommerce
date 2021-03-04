@@ -4,12 +4,15 @@ import Link from '@material-ui/core/Link';
 import React from 'react';
 import classes from './Header.module.scss';
 import { IHeaderItem } from './header.type';
+import { Badge } from "@material-ui/core";
+import {useSelector} from "react-redux";
 
 interface IDesktopHeaderPros {
   headerMenu: Array<IHeaderItem>
 }
 
 export default function DesktopHeader({ headerMenu } :IDesktopHeaderPros) {
+  const cartItemCount = useSelector((state) => state.cartState.cartItems.length);
   return (
     <Grid container justify="space-between" alignItems="center" className={classes.desktopHeader}>
       <Grid item container className={classes.leftContent}>
@@ -24,15 +27,17 @@ export default function DesktopHeader({ headerMenu } :IDesktopHeaderPros) {
           {headerMenu.map((menuItem) => (
             <Grid item key={menuItem.title} className={!menuItem.display ? 'hidden' : ''}>
               {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-              <Button
-                onClick={menuItem.onClick}
-                component="button"
-                color="inherit"
-              >
-                {menuItem.icon}
-                &nbsp;
-                {menuItem.title}
-              </Button>
+              <Badge badgeContent={cartItemCount} color="primary">
+                <Button
+                  onClick={menuItem.onClick}
+                  component="button"
+                  color="inherit"
+                >
+                  {menuItem.icon}
+                  &nbsp;
+                  {menuItem.title}
+                </Button>
+              </Badge>
             </Grid>
           ))}
         </Grid>
