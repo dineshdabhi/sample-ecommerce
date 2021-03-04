@@ -1,0 +1,5 @@
+.eslintrc.js
+Gruntfile.js
+function.js
+server/
+out/
