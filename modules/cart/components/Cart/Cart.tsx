@@ -18,6 +18,9 @@ export default function Cart() {
   const {
     cartItems,
     totalProducts,
+    totalTax,
+    itemTotal,
+    totalShipping,
     totalAmount
   } = useSelector((state) => state.cartState);
   const dispatch = useDispatch();
@@ -51,23 +54,53 @@ export default function Cart() {
               <Grid container item justify="flex-end">
                 <Grid
                   container
-                  item
-                  justify="space-between"
                   className={classes.totalContainer}
                 >
-                  <Typography>
-                    <b>Total:</b>
-                    {' '}
-                    <br/>
-                    {' '}
-                    {totalProducts}
-                    {' '}
-                    items
-                  </Typography>
-                  <Typography className={classes.totalAmount}>
-                    $
-                    {totalAmount}
-                  </Typography>
+                  <Grid item xs={12} justify="space-between" container>
+                    <Typography>
+                      <b>Item Total:</b>
+                      {' '}
+                      <br/>
+                      {' '}
+                      {totalProducts}
+                      {' '}
+                      items
+                    </Typography>
+                    <Typography className={classes.totalAmount}>
+                      $
+                      {itemTotal}
+                    </Typography>
+                  </Grid>
+
+                  <Grid item xs={12} justify="space-between" container>
+                    <Typography>
+                      <b>Total Tax:</b>
+                    </Typography>
+                    <Typography className={classes.totalAmount}>
+                      $
+                      {totalTax}
+                    </Typography>
+                  </Grid>
+
+                  <Grid item xs={12} justify="space-between" container>
+                    <Typography>
+                      <b>Shipping:</b>
+                    </Typography>
+                    <Typography className={classes.totalAmount}>
+                      $
+                      {totalShipping}
+                    </Typography>
+                  </Grid>
+
+                  <Grid item xs={12} justify="space-between" container>
+                    <Typography>
+                      <b>Total:</b>
+                    </Typography>
+                    <Typography className={classes.totalAmount}>
+                      $
+                      {totalAmount}
+                    </Typography>
+                  </Grid>
                 </Grid>
               </Grid>
               <Grid container justify="flex-end">
@@ -77,7 +110,7 @@ export default function Cart() {
                   variant="contained"
                   color="primary"
                 >
-                  Create Order
+                  Pay Now
                 </Button>
               </Grid>
             </>

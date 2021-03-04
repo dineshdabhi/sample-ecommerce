@@ -8,6 +8,9 @@ import localStorage from "../../shared/storage/LocalStorage";
 const initialState = {
   cartItems: [],
   totalAmount: 0,
+  itemTotal: 0,
+  totalTax: 0,
+  totalShipping: 500,
   totalProducts: 0,
 };
 
@@ -24,12 +27,16 @@ const updateCartItemsToStorage = (cartData) => {
 
 const getTotalItemsAndPrice = (cartItems) => {
   let totalAmount = 0;
+  let itemTotal = 0;
   let totalProducts = 0;
+  let totalTax = 0;
   cartItems.forEach((item) => {
     totalProducts += item.quantity;
     totalAmount += item.cartItemTotal;
+    totalTax += toFixedNumber((item.cartItemTotal * 1.23) / 100);
   });
-  return { totalAmount, totalProducts };
+  totalAmount = itemTotal + totalTax + initialState.totalShipping;
+  return { totalAmount, totalProducts, totalTax, itemTotal };
 };
 
 export default function cartReducer(state = cloneDeep(getLocalStorageState()), action) {
