@@ -12,7 +12,7 @@ import {
   clearCartService,
   createOrderFromCartService,
 } from '../../shared/cartService';
-import { message, scrollTop } from '../../../shared/utils';
+import { scrollTop } from '../../../shared/utils';
 
 export default function Cart() {
   const {
@@ -29,8 +29,7 @@ export default function Cart() {
 
   const createOrderFromCart = async () => {
     await createOrderFromCartService(dispatch);
-    message.success('Order is created successfully.');
-    router.push('/');
+    router.push('/order-success');
     scrollTop();
   };
 

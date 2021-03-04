@@ -35,7 +35,6 @@ const getTotalItemsAndPrice = (cartItems) => {
 export default function cartReducer(state = cloneDeep(getLocalStorageState()), action) {
   switch (action.type) {
     case CART_ACTIONS.UPDATE_QUANTITY: {
-      debugger;
       const { quantity, product } = action.payload;
       const newCartItems: Array<ICartItem> = cloneDeep(state.cartItems);
       if (quantity === 0) {
