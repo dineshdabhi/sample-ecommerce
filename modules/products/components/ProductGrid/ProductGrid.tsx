@@ -15,6 +15,9 @@ interface IProdductGridProps{
   gridWithSearchPanel?: boolean
 }
 
+/**
+ * Product not found layout
+ */
 function NoProductFound() {
   return (
     <Grid container style={{ height: 400 }} justify="center" alignItems="center">
@@ -34,7 +37,11 @@ interface IProductResponse {
   page: number,
   totalPages: number
 }
-export default function ProductGrid({ gridService, triggerChange, gridWithSearchPanel }:
+
+/**
+ * Product grid with grid service to load the product ,trigger to change the grid
+ */
+export default function ProductGrid({ gridService, triggerChange }:
 IProdductGridProps) {
   const [isLoading, setIsLoading] = useState(true);
   const [productList, setProductList] = useState([]);
@@ -89,7 +96,7 @@ IProdductGridProps) {
       ? (
         <>
           {/* If there is product length > 0 then show the list of the products */}
-          <Grid container className={`${classes.gridContainer} ${gridWithSearchPanel ? classes.withSearch : ''}`}>
+          <Grid container className={`${classes.gridContainer}`}>
             <Grid
               item
               container

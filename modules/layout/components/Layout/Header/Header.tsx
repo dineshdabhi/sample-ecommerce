@@ -5,6 +5,9 @@ import styles from './Header.module.scss';
 import DesktopHeader from './DesktopHeader';
 import { IHeaderItem } from './header.type';
 
+/**
+ * Header with the header menu items
+ */
 export default function Header() {
   const router = useRouter();
 

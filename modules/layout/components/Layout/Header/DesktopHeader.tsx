@@ -11,6 +11,9 @@ interface IDesktopHeaderPros {
   headerMenu: Array<IHeaderItem>
 }
 
+/**
+ * Desktop header to be display on the desktop screens, we can have diffrent header for mobile screen
+ */
 export default function DesktopHeader({ headerMenu } :IDesktopHeaderPros) {
   const cartItemCount = useSelector((state) => state.cartState.cartItems.length);
   return (

@@ -25,8 +25,10 @@ const updateCartItemsToStorage = (cartData) => {
   localStorage.setJSONItem(STORAGE_KEYS.CART_DATA, cartData);
 }
 
+/**
+ * Set the cart totals from here.
+ */
 const getTotalItemsAndPrice = (cartItems) => {
-  let totalAmount = 0;
   let itemTotal = 0;
   let totalProducts = 0;
   let totalTax = 0;
@@ -35,10 +37,13 @@ const getTotalItemsAndPrice = (cartItems) => {
     itemTotal += toFixedNumber((item.cartItemTotal) * item.quantity);
     totalTax += toFixedNumber((item.cartItemTotal * 1.23) / 100);
   });
-  totalAmount = itemTotal + totalTax + initialState.totalShipping;
+  const totalAmount = itemTotal + totalTax + initialState.totalShipping;
   return { totalAmount, totalProducts, totalTax, itemTotal };
 };
 
+/**
+ * Cart reducer to manage the cart add edit and quantity
+ */
 export default function cartReducer(state = cloneDeep(getLocalStorageState()), action) {
   switch (action.type) {
     case CART_ACTIONS.UPDATE_QUANTITY: {

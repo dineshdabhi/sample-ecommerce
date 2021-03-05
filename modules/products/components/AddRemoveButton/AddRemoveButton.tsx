@@ -5,6 +5,9 @@ import { Product } from '../../shared/product.type';
 import useStyles from './AddRemoveButton.style';
 import { updateCartItemQuantity } from "../../../cart/redux/cart.action";
 
+/**
+ * Add Remove button component to add/remove item from the cart
+ */
 function AddRemoveButton({ product, cartItem }: {product?: Product, cartItem?: any}) {
   const classes = useStyles();
   const dispatch = useDispatch();

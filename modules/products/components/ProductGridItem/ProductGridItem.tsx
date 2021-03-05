@@ -4,6 +4,9 @@ import classes from './ProductGridItem.module.scss';
 import { Product } from '../../shared/product.type';
 import AddRemoveButton from '../AddRemoveButton/AddRemoveButton';
 
+/**
+ * Product grid item with product details
+ */
 export default function ProductGridItem({ product }: {product:Product}) {
   return (
     <Grid item className={classes.productItemContainerWrapper}>

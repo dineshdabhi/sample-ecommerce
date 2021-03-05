@@ -10,6 +10,9 @@ import AddRemoveButton from '../../../products/components/AddRemoveButton/AddRem
 import { updateCartItemQuantity } from '../../redux/cart.action';
 import { removeCartItemService } from '../../shared/cartService';
 
+/**
+ * Cart item with add edit buttons
+ */
 export default function CartItem({ cartItem }: {cartItem: ICartItem}) {
   const dispatch = useDispatch();
 

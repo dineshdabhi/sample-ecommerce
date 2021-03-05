@@ -4,6 +4,9 @@ import {
 } from '@material-ui/core';
 import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 
+/**
+ * Order success page content
+ */
 export default function OrderSuccess() {
   return (
     <Grid container style={{ height: 400 }} justify="center" alignItems="center">

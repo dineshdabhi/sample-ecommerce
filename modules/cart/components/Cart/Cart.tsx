@@ -14,6 +14,9 @@ import {
 } from '../../shared/cartService';
 import { scrollTop } from '../../../shared/utils';
 
+/**
+ * Cart page to show the cart details
+ */
 export default function Cart() {
   const {
     cartItems,
