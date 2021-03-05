@@ -42,6 +42,24 @@ export default function Cart() {
   return (
     <div className={classes.cartContainer}>
       <Grid container>
+        {!cartItems.length?
+        <Grid container item justify="center" alignItems="center" className={classes.emptyCart}>
+          <Grid item className={classes.emptyCartInner}>
+            <LocalMallIcon className={classes.cartIcon}/>
+            <br/>
+            <Typography style={{ fontSize: 35 }}>
+              Your cart is empty
+            </Typography>
+            <br/>
+            <Link href="/">
+              <Button variant="contained" color="primary">
+                Shop Now
+              </Button>
+            </Link>
+          </Grid>
+        </Grid> : null}
+      </Grid>
+      <Grid container>
         {cartItems.length
           ? (
             <>
@@ -117,23 +135,7 @@ export default function Cart() {
                 </Button>
               </Grid>
             </>
-          ) : (
-            <Grid container item justify="center" alignItems="center" className={classes.emptyCart}>
-              <Grid item className={classes.emptyCartInner}>
-                <LocalMallIcon className={classes.cartIcon}/>
-                <br/>
-                <Typography style={{ fontSize: 35 }}>
-                  Your cart is empty
-                </Typography>
-                <br/>
-                <Link href="/">
-                  <Button variant="contained" color="primary">
-                    Shop Now
-                  </Button>
-                </Link>
-              </Grid>
-            </Grid>
-          )}
+          ) : null}
       </Grid>
     </div>
   );

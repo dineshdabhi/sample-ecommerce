@@ -4,7 +4,7 @@ import Link from '@material-ui/core/Link';
 import React from 'react';
 import classes from './Header.module.scss';
 import { IHeaderItem } from './header.type';
-import { Badge } from "@material-ui/core";
+import { Badge, Chip } from "@material-ui/core";
 import {useSelector} from "react-redux";
 
 interface IDesktopHeaderPros {
@@ -30,7 +30,7 @@ export default function DesktopHeader({ headerMenu } :IDesktopHeaderPros) {
           {headerMenu.map((menuItem) => (
             <Grid item key={menuItem.title} className={!menuItem.display ? 'hidden' : ''}>
               {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-              <Badge badgeContent={cartItemCount} color="primary">
+              {/*<Badge badgeContent={cartItemCount} color="primary">*/}
                 <Button
                   onClick={menuItem.onClick}
                   component="button"
@@ -39,8 +39,10 @@ export default function DesktopHeader({ headerMenu } :IDesktopHeaderPros) {
                   {menuItem.icon}
                   &nbsp;
                   {menuItem.title}
+                  &nbsp;
+                  {cartItemCount ? <Chip label={cartItemCount} />: null}
                 </Button>
-              </Badge>
+              {/*</Badge>*/}
             </Grid>
           ))}
         </Grid>
