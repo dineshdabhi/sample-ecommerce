@@ -1,5 +1,9 @@
 import { clearCartAction } from '../redux/cart.action';
 
+export const removeCartItemService = async ({ productId }) => {
+
+};
+
 /**
  * Service to clear the cart data
  */
